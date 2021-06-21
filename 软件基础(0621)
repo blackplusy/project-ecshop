@@ -149,7 +149,12 @@
 				my.ini      mysql的配置文件
 			WWW             存放项目代码的位置
 
-
+3.svn的使用
+	a.360软件管家中安装TortoiseSVN 64位
+	b.文件的上传
+		右键桌面--TortoiseSVN--repo browser--https://192.168.1.27/svn/ecshop--用户名/密码(test)--拖拽进文件夹
+	c.文件的下载
+	右键桌面--TortoiseSVN--repo browser--https://192.168.1.27/svn/ecshop--用户名/密码(test)--拖拽到桌面文件夹
 
 
 
