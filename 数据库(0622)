@@ -30,3 +30,52 @@
 	insert into 表(列1，列2) values(值1，值2)
 	需求:向sp表中新增数据,名字,ladeng,价格250
 	insert into sp(name,price) values('ladeng',250);
+======================================
+1.下载安装mysql
+	a.官网下载
+		https://dev.mysql.com/downloads/mysql/
+	b.集成软件
+		phpstudy
+		xampp
+2.检查服务和端口
+	mysql的服务    mysqld
+	mysql的端口    3306
+	apache的服务   httpd
+	apache的端口   80
+	win+r--cmd--tasklist | find "mysqld"
+	netstat -an | find "80"
+3.mysql的登录
+	a.登录方式(win+r--cmd)
+		1>进入到mysql的bin文件夹
+			d:
+			cd phpStudy\MySQL\bin
+		2>设置环境变量(让系统可以找到命令)
+			右键计算机--属性--高级--环境变量--系统变量--Path中添加mysql的bin路径
+			;D:\phpStudy\MySQL\bin
+			确定x3
+	b.登录命令
+		mysql
+			登录本地数据库
+		mysql -u root -p
+			管理员登录mysql数据库
+		mysql -h 127.0.0.1 -u root -p
+			管理员登录IP地址为127.0.0.1的数据库
+4.mysql基础
+	数据库是由表组成
+	表是由数据组成
+	show databases;
+		查看当前系统中安装的所有数据库
+	select database();
+		查看当前数据库的名字
+	use test;
+		切换当前数据库为test
+	show tables;
+		查看当前数据库有哪些表
+	select * from ecs_goods;
+	select * from ecs_goods\G
+		查看ecs_goods表中有哪些数据
+
+
+
+
+
