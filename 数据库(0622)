@@ -1,0 +1,32 @@
+1.mysql管理工具
+	navicat
+	sqlyog(小海豚)
+	dbeaver
+	mysql-front
+2.表操作
+	常见数据类型
+	字符   char  varchar
+	数值   int
+	日期   date
+	创建表结构
+		create table 表名(
+			列   数据类型,
+			列   数据类型
+		)
+		需求：创建表商品(sp),商品名称(name) 字符类型,商品价格(price) 数值类型，出厂日期(ddate) 日期类型
+		create table sp(
+			name  char(10),
+			price   int,
+			ddate  date
+		);
+
+3.数据的新增
+	字符类型、日期类型加单引号
+	向表中所有列新增数据
+	insert into 表 values(值1，值2.....)
+	需求:向sp表中新增数据,名字,o8ma,价格300，出厂日期2021-06-22
+	insert into sp values('o8ma',300,'2021-06-22');
+	向表中指定列
+	insert into 表(列1，列2) values(值1，值2)
+	需求:向sp表中新增数据,名字,ladeng,价格250
+	insert into sp(name,price) values('ladeng',250);
