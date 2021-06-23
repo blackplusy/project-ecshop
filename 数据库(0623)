@@ -165,7 +165,17 @@
         		having和where区别:
         		having 分组后过滤，有分组才有having
         		where  分组前过滤
-
+3.sakila数据库的安装
+	a.下载
+		https://downloads.mysql.com/docs/sakila-db.zip
+	b.解压压缩包
+	c.命令提示符进入到解压后的文件夹
+	d.登录mysql
+		win+r--cmd--mysql -u root -p
+	e.导入sakila-schema.sql
+		source sakila-schema.sql;
+	f.导入sakila-data.sql
+		source sakila-data.sql;
 
 
 
