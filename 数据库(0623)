@@ -1,0 +1,64 @@
+1.数据增删改
+	数据的新增
+	insert into 表 values(值1，值2....);
+	insert into 表(列1,列2) values(值1,值2);
+	数据的修改
+	update 表 set 列=值 where 条件；
+	数据的删除
+	delete from 表 where 条件;
+	truncate table 表;
+2.表结构说明
+	https://blog.csdn.net/weixin_37678117/article/details/81192245
+	a.查询分类
+		简单查询
+		多表查询
+		子查询
+		分组查询
+	b.简单查询
+		语法:select 列 from 表 where 条件;
+		select 后面 from 前面是和列相关的
+		* 代表所有列
+		where条件是和行相关的
+		1>查询指定列
+			查询商城中有哪些商品名称，本店售价
+			select goods_name,shop_price from ecs_goods;
+		2>查询指定行
+			查询商城中商品名称是kd876的所有信息
+			select * from ecs_goods where goods_name='KD876';
+		3>查询指定行的列
+			查询商城中商品名称是kd876的本店售价
+			select shop_price from ecs_goods where goods_name='kd876';
+		4>查询所有数据
+			select * from ecs_goods;
+	c.where条件
+		1>比较
+			> < = >= <= != <>
+			需求:查询本店售价高于2000的商品名称
+			select goods_name from ecs_goods where shop_price>2000;
+		2>关系
+			and or not
+			需求:查询本店售价范围在1000和2000之间的所有信息
+			select * from ecs_goods where shop_price>=1000 and shop_price<=2000;
+		3>区间
+			between...and...
+			小在前，大在后
+			需求:查询本店售价范围在1000和2000之间的所有信息
+			select * from ecs_goods where shop_price between 1000 and 2000;
+		4>模糊查询
+			当信息不完整时候使用，通常和字符类型一起使用
+			like 
+			_     一个字符
+			%     任意个字符
+			需求:查询商品名称是诺基亚开头的所有信息
+			select * from ecs_goods where goods_name like '诺基亚%';
+			需求:查询商品名称是6结尾的所有信息
+			select * from ecs_gods where goods_name like '%6';
+			需求:查询商品名称是6个字符的所有信息
+			select * from ecs_goods where goods_name like '______';
+		5>in
+			在。。。里面，或者的关系
+			需求:查询商品名称是kd876的或者诺基亚的所有信息
+			select * from ecs_goods where goods_name in ('kd876','诺基亚');
+			
+
+
