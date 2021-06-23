@@ -88,10 +88,85 @@
 			  		select cat_name from ecs_goods ,ecs_category
 			  		where  ecs_goods.cat_id=ecs_category.cat_id
 			  		and goods_name='KD876';
-			  		
+
 			  		select c.cat_name from ecs_goods e,ecs_category c
 			  		where e.cat_id=c.cat_id
 			  		and e.goods_name='KD876';
+			需求:查询商品本店售价范围1000-2000之间的分类名称
+				1)   
+					本店售价
+					分类名称
+				2)
+					ecs_goods
+					ecs_category
+				3）关联
+					select * from ecs_goods g,ecs_category c
+					where g.cat_id=c.cat_id;
+				4）过滤
+					select c.cat_name from ecs_goods g,ecs_category c
+					where g.cat_id=c.cat_id
+					and g.shop_price>=1000 and g.shop_price<=2000;					
+			需求2:查询商品分类名称是3G手机，并且以诺基亚开头的所有商品信息
+				select  *  from ecs_goods g，ecs_category c
+				where g.cat_id=c.cat_id
+				and g.goods_name like '诺基亚%'
+				and c.cat_name='3G手机';
+			需求3:查询商品分类是3G手机，价格低于300的所有商品名称
+				select  g.goods_name  from ecs_goods g,ecs_category c
+				where g.cat_id=c.cat_id
+				and c.cat_name='3G手机'
+				and g.shop_price<300;
+		f.子查询
+			一条SQL语句的执行依赖于另外一条SQL语句的执行结果
+			需求:查询商品名称是KD876的分类名称
+			1）查询ecs_goods表中满足条件的cat_id
+				select cat_id from ecs_goods where goods_name='KD876';
+			2) 查询ecs_category表中cat_id是上面查询结果的分类名称
+				select cat_name from ecs_category where cat_id=(select cat_id from ecs_goods where goods_name='KD876');
+			子查询可以分为单行子查询、多行子查询
+			单行子查询查询子句返回的结果是一行，可以用等号或者in
+			多行子查询查询子句返回的结果是多行，只能用in
+			需求:查询商品本店售价范围1000-2000之间的分类名称
+			1）查询ecs_goods表中满足条件的cat_id
+				select cat_id from ecs_goods where shop_price between 1000 and 2000;
+			2）查询ecs_category表中cat_id为上面查询结果的分类名称
+				select cat_name from ecs_category where cat_id in (select cat_id from ecs_goods where shop_price between 1000 and 2000);
+		g.分组查询
+			按照某种属性进行分类
+			语法:select 列  from  表 
+					where  条件
+						group  by 分组条件
+							having 分组后过滤条件
+			1)分组函数
+				max()    最大
+				min()  	 最小
+				avg()    平均
+				sum()    求和
+				count()  计数
+				分组函数通常和分组一起使用，但是也可以单独使用
+				需求：查询ecs_goods表中最高，最低，平均本店售价
+					select max(shop_price),min(shop_pirce),avg(shop_price) from ecs_goods;
+			2)分组
+				需求:查询ecs_goods表中每种分类id有多少个商品
+				select cat_id,count(goods_name) from ecs_goods group by cat_id;
+				需求:查询每种分类有多少种商品，分类名称，商品数量
+				1）关联
+				select * from ecs_goods g,ecs_category c
+				where g.cat_id=c.cat_id;
+				2）
+				select c.cat_name,count(g.goods_name) from ecs_goods g,ecs_category c
+				where g.cat_id=c.cat_id
+				group by c.cat_name;
+				需求:查询商品数量超过5的分类名称
+				select c.cat_name,count(g.goods_name) from ecs_goods g,ecs_category c
+				where g.cat_id=c.cat_id
+				group by c.cat_name
+        		having count(g.goods_name)>5;
+        		having和where区别:
+        		having 分组后过滤，有分组才有having
+        		where  分组前过滤
+
+
 
 
 
